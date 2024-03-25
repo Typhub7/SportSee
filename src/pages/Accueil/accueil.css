@@ -1,0 +1,5 @@
+.pagecontent_container {
+    flex-grow: 1;
+    overflow :hidden;
+    margin: 90px;
+}

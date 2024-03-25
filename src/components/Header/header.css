@@ -1,0 +1,7 @@
+.header > *:first-child {
+    flex-grow: 1;
+}
+
+.header > *:last-child {
+    flex-grow: 10;
+}
