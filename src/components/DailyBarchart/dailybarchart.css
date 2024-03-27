@@ -1,0 +1,55 @@
+.custom-tooltip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 20px;
+    background-color: red;
+    color: white;
+    font-size: 0.625rem;
+    padding: 16px 8px; 
+}
+
+.dailyBarChart_legend {
+    margin-bottom: 36px;
+}
+
+.dailybarchart_container {
+    background-color: #FBFBFB;
+    padding: 23px;
+    width: fit-content;
+}
+
+.dailyBarChart_legend_title {
+    font-weight: 600;
+    color : #20253A;
+}
+
+.legend_red {
+    color : #74798C;
+    margin-right: 10px;
+}
+  
+.legend_black {
+    color : #74798C;
+    margin-right: 10px;
+}
+
+.legend_red:before {
+    display: inline-flex;
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: red;   
+}
+
+.legend_black:before {
+    display: inline-flex;
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: black;   
+}
