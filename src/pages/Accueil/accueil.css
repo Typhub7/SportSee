@@ -1,5 +1,15 @@
 .pagecontent_container {
     flex-grow: 1;
     overflow :hidden;
-    margin: 90px;
+    margin-top: 90px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.allstat_container {
+    margin-top: 77px;
+}
+
+.main_container {
+    height: 100vh;
 }

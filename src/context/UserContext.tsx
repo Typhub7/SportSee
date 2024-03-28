@@ -97,7 +97,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ userId, children }) => {
     };
 
     fetchUserData ();
-  }, []);
+  }, [userId]);
 
   return (
     <UserContext.Provider value={userData}>

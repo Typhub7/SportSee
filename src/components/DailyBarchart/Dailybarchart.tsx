@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import './dailybarchart.css'
+//import { useUserContext } from '../../context/UserContext';
 
 type BarChartData = {
   day: string;
@@ -44,8 +45,12 @@ const sessions: BarChartData[] = [
     calories: 390
   }
 ];
+
 //{["dataMin - 2", "dataMax + 1"]}
 const Dailybarchart = () => {
+  //const { userData  } = useUserContext();
+  //const sessions = userData.userActivity;
+
   return (
     <div className='dailybarchart_container'>
       <BarChart width={835} height={300} data={sessions} barSize={10} barGap={8}>
