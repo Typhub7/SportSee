@@ -17,6 +17,7 @@
     background-color: #FBFBFB;
     padding: 23px;
     width: fit-content;
+    border-radius: 0.375rem;
 }
 
 .dailyBarChart_legend_title {

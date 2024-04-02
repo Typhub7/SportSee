@@ -1,67 +1,50 @@
-import { z } from 'zod';
-import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
+import { useContext } from "react";
+import { UserContext } from "./UserProvider";
 
-interface UserProviderProps {
-    userId: number; // Ajoutez une prop pour l'ID de l'utilisateur
-    children: ReactNode;
-  }
+// Définition des interfaces pour les schémas de données utilisateur
+interface UserMainDataSchema {
+  id: number;
+  userInfos: {
+    firstName: string;
+    lastName: string;
+    age: number;
+  };
+  todayScore: number;
+  keyData: {
+    calorieCount: number;
+    proteinCount: number;
+    carbohydrateCount: number;
+    lipidCount: number;
+  };
+}
 
-// Définir les schémas de validation avec Zod
-const userMainDataSchema = z.object({
-  id: z.number(),
-  userInfos: z.object({
-    firstName: z.string(),
-    lastName: z.string(),
-    age: z.number(),
-  }),
-  todayScore: z.number(),
-  keyData: z.object({
-    calorieCount: z.number(),
-    proteinCount: z.number(),
-    carbohydrateCount: z.number(),
-    lipidCount: z.number(),
-  }),
-});
+interface UserActivitySchema {
+  userId: number;
+  sessions: {
+    day: string;
+    kilogram: number;
+    calories: number;
+  }[];
+}
 
-const userActivitySchema = z.object({
-  userId: z.number(),
-  sessions: z.array(
-    z.object({
-      day: z.string(),
-      kilogram: z.number(),
-      calories: z.number(),
-    })
-  ),
-});
+interface UserAverageSessionsSchema {
+  userId: number;
+  sessions: {
+    day: number;
+    sessionLength: number;
+  }[];
+}
 
-const userAverageSessionsSchema = z.object({
-  userId: z.number(),
-  sessions: z.array(
-    z.object({
-      day: z.number(),
-      sessionLength: z.number(),
-    })
-  ),
-});
+interface UserPerformanceSchema {
+  userId: number;
+  kind: Record<string, string>;
+  data: {
+    value: number;
+    kind: number;
+  }[];
+}
 
-const userPerformanceSchema = z.object({
-  userId: z.number(),
-  kind: z.record(z.string()),
-  data: z.array(
-    z.object({
-      value: z.number(),
-      kind: z.number(),
-    })
-  ),
-});
-
-// Utiliser les interfaces pour le typage
-type UserMainDataSchema = z.infer<typeof userMainDataSchema>;
-type UserActivitySchema = z.infer<typeof userActivitySchema>;
-type UserAverageSessionsSchema = z.infer<typeof userAverageSessionsSchema>;
-type UserPerformanceSchema = z.infer<typeof userPerformanceSchema>;
-
-// Utiliser les schémas de Zod pour la validation et le typage des données
+// Définition d'un type regroupant toutes les données utilisateur
 type UserData = {
   userMainData: UserMainDataSchema;
   userActivity: UserActivitySchema[];
@@ -69,44 +52,7 @@ type UserData = {
   userPerformance: UserPerformanceSchema[];
 };
 
-// Créer le contexte
-const UserContext = createContext<UserData | undefined>(undefined);
-
-// Créer le fournisseur de contexte
-const UserProvider: React.FC<UserProviderProps> = ({ userId, children }) => {
-    const [userData, setUserData] = useState<UserData | undefined>(undefined);
-
-  useEffect(() => {
-    const fetchUserData  = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/users/${userId}`);
-        if (!response.ok) {
-          throw new Error('Erreur lors de la récupération des données');
-        }
-        const data = await response.json();
-        
-        // Vérification que les données correspondent au schéma userMainDataSchema
-        if (userMainDataSchema.safeParse(data.userMainData).success) {
-          setUserData(data);
-        } else {
-          throw new Error('Les données ne correspondent pas au schéma attendu');
-        }
-      } catch (error) {
-        console.error('Erreur lors de la récupération des données:', error);
-      }
-    };
-
-    fetchUserData ();
-  }, [userId]);
-
-  return (
-    <UserContext.Provider value={userData}>
-      {children}
-    </UserContext.Provider>
-  );
-};
-
-// Utiliser un hook personnalisé pour accéder au contexte
+// Hook pour utiliser le contexte des données utilisateur
 const useUserContext = () => {
   const context = useContext(UserContext);
   if (!context) {
@@ -115,4 +61,5 @@ const useUserContext = () => {
   return context;
 };
 
-export { UserProvider, useUserContext };
+export type { UserMainDataSchema, UserActivitySchema, UserAverageSessionsSchema, UserPerformanceSchema, UserData };
+export { useUserContext };

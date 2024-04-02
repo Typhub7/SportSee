@@ -1,6 +1,7 @@
 import Dailybarchat from "../../components/DailyBarchart/Dailybarchart";
 import Header from "../../components/Header/Header";
 import Resumeactivity from "../../components/Resumeactivity/Resumeactivity";
+import ScoreChart from "../../components/ScoreChart/Scorechart";
 import Submenu from "../../components/SubMenu/Submenu";
 import Usertitle from "../../components/UserTitle/Usertitle";
 import { UserProvider } from "../../context/UserContext";
@@ -21,6 +22,9 @@ const Accueil = () => {
             <div className="allstat_container flex row ">
               <div className="leftstat_container">
                 <Dailybarchat />
+                <div className="three_container flex row">
+                  <ScoreChart score ={0.12} />
+                </div>
               </div>
               <div className="rightstat_container">
                 <Resumeactivity/>

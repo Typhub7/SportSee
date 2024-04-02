@@ -1,6 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import './dailybarchart.css'
-//import { useUserContext } from '../../context/UserContext';
 
 type BarChartData = {
   day: string;
@@ -64,7 +63,7 @@ const Dailybarchart = () => {
       <Tooltip 
         offset={40}
         wrapperStyle={{ outline: "none", fontWeight: 600 }}
-        content={<CustomTooltip />}
+        content={<CustomTooltip  />}
         />
         <Bar yAxisId="ybar-right" dataKey="kilogram" name="kg" fill="black" radius={[10, 10, 0, 0]} />
         <Bar yAxisId="ybar-left"  dataKey="calories" name="kCal" fill="red" radius={[10, 10, 0, 0]} />
@@ -72,18 +71,10 @@ const Dailybarchart = () => {
     </div>
   );
 }
-interface PayloadData {
-  kilogram: number;
-  calories: number;
-}
 
-interface TooltipData {
-  payload: Array<{
-    payload: PayloadData;
-  }>;
-}
-// erreur si any .. attente de paramètre si typage ...pareil si (data: TooltipData= {})...
-const CustomTooltip = (data: TooltipData ) => {
+// documentation de recharts implique de typer en any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any 
+const CustomTooltip = (data: any) => {
   try {
     const kg = data.payload[0]?.payload.kilogram;
     const kCal = data.payload[0]?.payload.calories;
