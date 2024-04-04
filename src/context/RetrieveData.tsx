@@ -7,7 +7,9 @@
 export async function RetrieveData(url: string | URL) {
     try{
         const response = await fetch(url)
+        console.log(response)
         const data = await response.json()
+        console.log(data)
         return data
     } catch {
         console.log('Erreur appel api')

@@ -12,7 +12,7 @@ const UserContext = createContext<UserData | undefined>(undefined);
 
 const UserProvider: React.FC<UserProviderProps> = ({ userId, children }) => {
   const [userData, setUserData] = useState<UserData | undefined>(undefined);
-
+ 
   useEffect(() => {
     const RetrieveDataForUser = async () => {
       try {
@@ -23,6 +23,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ userId, children }) => {
           RetrieveUserAverageSessions(userId),
           RetrieveUserPerformance(userId)
         ]);
+        console.log("userMainData dans userprovider",userMainData)
+        console.log("userActivity dans userprovider", userActivity)
 
         // Valider les données avec les schémas Zod
         const userMainDataSchema = z.object({
@@ -40,6 +42,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ userId, children }) => {
             lipidCount: z.number(),
           }),
         });
+        console.log("userMainDataSchema dans userprovider",userMainDataSchema)
 
         const userActivitySchema = z.object({
           userId: z.number(),
@@ -51,6 +54,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ userId, children }) => {
             })
           ),
         });
+        console.log("userActivitySchema dans userprovider",userActivitySchema)
 
         const userAverageSessionsSchema = z.object({
           userId: z.number(),

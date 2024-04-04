@@ -1,58 +1,14 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import './dailybarchart.css'
 
-type BarChartData = {
-  day: string;
-  kilogram: number;
-  calories: number;
-};
-
-const sessions: BarChartData[] = [
-  {
-    day: '2020-07-01',
-    kilogram: 80,
-    calories: 240
-  },
-  {
-    day: '2020-07-02',
-    kilogram: 80,
-    calories: 220
-  },
-  {
-    day: '2020-07-03',
-    kilogram: 81,
-    calories: 280
-  },
-  {
-    day: '2020-07-04',
-    kilogram: 81,
-    calories: 290
-  },
-  {
-    day: '2020-07-05',
-    kilogram: 80,
-    calories: 160
-  },
-  {
-    day: '2020-07-06',
-    kilogram: 78,
-    calories: 162
-  },
-  {
-    day: '2020-07-07',
-    kilogram: 76,
-    calories: 390
-  }
-];
-
 //{["dataMin - 2", "dataMax + 1"]}
-const Dailybarchart = () => {
-  //const { userData  } = useUserContext();
-  //const sessions = userData.userActivity;
+const Dailybarchart = ({ userActivity }: { userActivity: any }) => {
+   const userSessions = userActivity.sessions;
+  console.log(userSessions)
 
   return (
     <div className='dailybarchart_container'>
-      <BarChart width={835} height={300} data={sessions} barSize={10} barGap={8}>
+      <BarChart width={835} height={300} data={userSessions} barSize={10} barGap={8}>
       <CartesianGrid strokeDasharray="2 2" horizontal={true} vertical={false} />
       <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 14 }}
         tickMargin={14} tickFormatter={(value) => parseInt(value.substring(8)).toString()}/>
