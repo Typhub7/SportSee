@@ -1,35 +1,30 @@
-//import Dailybarchat from "../../components/DailyBarchart/Dailybarchart";
+import Dailybarchat from "../../components/DailyBarchart/Dailybarchart";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Resumeactivity from "../../components/Resumeactivity/Resumeactivity";
 import ScoreChart from "../../components/ScoreChart/Scorechart";
 import Submenu from "../../components/SubMenu/Submenu";
 import Usertitle from "../../components/UserTitle/Usertitle";
-import { UserProvider } from "../../context/UserProvider";
-import { useUserContext } from "../../context/UserContext";
-
-
 import './accueil.css'
+import { UserData } from "../../model/UserDataModel";
+import { RetrieveUserActivity, RetrieveUserAverageSessions, RetrieveUserData, RetrieveUserPerformance } from "../../api/Api";
 
 
 const Accueil = () => {
   const userId = 12;
-  /*const userData = useUserContext(); // Récupérez les données utilisateur avec le hook useUserContext
-  console.log("userdata dans accueil",userData)
-  
-  // Vérifiez si les données utilisateur sont disponibles
-  if (!userData) {
-    return <div>Loading...</div>; // Affichez un message de chargement si les données ne sont pas encore disponibles
+  const [state,setstate] = useState<UserData | null>(null)
+  const fetchData = async () => { 
+    const userActivity = await RetrieveUserActivity(userId)
+    const userAverageSessions = await RetrieveUserAverageSessions(userId)
+    const userPerformance = await RetrieveUserPerformance(userId)
+    const userMainData = await RetrieveUserData(userId)
+    setstate({userActivity,userAverageSessions,userPerformance,userMainData})
   }
-
-  // Extrayez les données d'activité utilisateur du contexte
-  const userActivity = userData.userActivity;
-  console.log("userActivity dans accueil", userActivity)
-  */
-  //<Dailybarchat userActivity={userActivity}/>
+  
+  useEffect (() => {fetchData()},[])
 
   return (
-    <UserProvider userId={userId}>
-      <div className='accueil_container'>
+    <div className='accueil_container'>
         <Header />
         <div className="main_container flex column">
           <Submenu />
@@ -37,7 +32,7 @@ const Accueil = () => {
             <Usertitle name={'Thomas'} greetings={'Félicitation ! Vous avez explosé vos objectifs hier 👏'}/>
             <div className="allstat_container flex row ">
               <div className="leftstat_container">
-              
+              {state!== null &&<Dailybarchat userActivity={state.userActivity}/>}
                 <div className="three_container flex row">
                   <ScoreChart score ={0.12} />
                 </div>
@@ -49,7 +44,7 @@ const Accueil = () => {
           </div>
         </div>      
       </div>
-    </UserProvider>
+
   )
 }
 

@@ -1,30 +1,41 @@
 
-import { PieChart, Pie} from 'recharts';
+import { PieChart, Pie, Cell} from 'recharts';
+import './scorechart.css'
 
 
-const ScoreChart = ({ score }: { score: number}) => {
+const ScortChart = ({ score }: { score: number}) => {
     const data = [
         { name: 'Score', value: score * 100 },
     ];
     return (
-      <PieChart width={258} height={253}>
-        <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            startAngle={70}
-            endAngle={430 * score + 70}
-            innerRadius={"60%"}
-            outerRadius={"70%"}
-            dataKey="value"
-            cornerRadius={10}
-            fill="#8884d8"
-            paddingAngle={5}
-        >
-
-        </Pie>
-      </PieChart>
+    <div className='scoreChartContainer '>
+      <div className="scoreChartTitle">Score</div>
+      <div className='scoreChartPie_container'>
+        <PieChart width={180} height={180} >
+          
+          <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              startAngle={80}
+              endAngle={360 * score + 80}
+              innerRadius={"95%"}
+              outerRadius={"105%"}
+              dataKey="value"
+              cornerRadius={10}
+              fill="#8884d8"
+              paddingAngle={5}
+          >
+            <Cell stroke="" fill="red" />
+          </Pie>
+        </PieChart>
+      </div>
+      <div className="scoreValue">
+        <div className="scorePercentage">{score * 100}%</div>
+        <div className="scoreObjectifText">de votre objectif</div>
+      </div>
+    </div>
     );
 }
 
-export default ScoreChart
+export default ScortChart

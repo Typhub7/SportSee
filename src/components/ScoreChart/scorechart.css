@@ -1,0 +1,37 @@
+.scoreChartContainer {
+    height: 253px;
+    width: 258px;
+    background-color: #FBFBFB;
+    position: relative;
+}
+
+.scoreChartTitle {
+    font-size: 0.938rem;
+    padding-top: 24px;
+    padding-left: 30px;
+}
+
+.scoreChartPie_container {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.scoreValue {
+    position: absolute;
+    width: 100px;
+    left: 100px;
+    top: 100px;
+    z-index: 10;
+    font-size: 26px;
+}
+
+.scorePercentage {
+    align-self: center;
+}
+
+. {
+    color: #74798C
+}
