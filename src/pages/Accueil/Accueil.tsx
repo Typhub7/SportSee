@@ -1,14 +1,17 @@
-import Dailybarchat from "../../components/DailyBarchart/Dailybarchart";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Resumeactivity from "../../components/Resumeactivity/Resumeactivity";
+import Dailybarchat from "../../components/DailyBarchart/Dailybarchart";
+import AverageChart from "../../components/AverageSessionChart/AverageSessionChart";
 import ScoreChart from "../../components/ScoreChart/Scorechart";
+import ChartRadar from "../../components/RadarChart/RadarChart";
 import Submenu from "../../components/SubMenu/Submenu";
 import Usertitle from "../../components/UserTitle/Usertitle";
 import './accueil.css'
 import { UserData } from "../../model/UserDataModel";
 import { RetrieveUserActivity, RetrieveUserAverageSessions, RetrieveUserData, RetrieveUserPerformance } from "../../api/Api";
-import ChartRadar from "../../components/RadarChart/RadarChart";
+
+
 
 
 const Accueil = () => {
@@ -30,13 +33,14 @@ const Accueil = () => {
         <div className="main_container flex column">
           <Submenu />
           <div className="pagecontent_container grow overflow-hidden">
-            <Usertitle name={'Thomas'} greetings={'Félicitation ! Vous avez explosé vos objectifs hier 👏'}/>
+          {state!== null &&<Usertitle name={state.userMainData.userInfos.firstName} greetings={'Félicitation ! Vous avez explosé vos objectifs hier 👏'}/>}
             <div className="allstat_container flex row ">
               <div className="leftstat_container">
               {state!== null &&<Dailybarchat userActivity={state.userActivity}/>}
                 <div className="three_container flex row">
+                {state!== null &&<AverageChart userAverageSessions={state.userAverageSessions}/>}
                 {state!== null &&<ChartRadar UserPerformance={state.userPerformance}/>}
-                  {state!== null &&<ScoreChart userMainData={state.userMainData}/>}
+                {state!== null &&<ScoreChart userMainData={state.userMainData}/>}
                 </div>
               </div>
               <div className="rightstat_container">
