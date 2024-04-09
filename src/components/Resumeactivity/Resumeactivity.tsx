@@ -4,30 +4,18 @@ import proteinsIcon from "../../assets/protein-icon.png";
 import glucidesIcon from "../../assets/carbs-icon.png";
 import lipidesIcon from "../../assets/fat-icon.png";
 import "../Resumeactivity/resumeactivity.css"
+import { UserMainData } from "../../model/UserMainDataModel";
 
-interface KeyData {
-    calorieCount: number;
-    proteinCount: number;
-    carbohydrateCount: number;
-    lipidCount: number;
-  }
 
-const data : KeyData[] = [
-    {   calorieCount: 1930,
-        proteinCount: 155,
-        carbohydrateCount: 290,
-        lipidCount: 50
-    }
-]
-
-const Resumeactivity = () => {
-    const keyData = data[0];
+const Resumeactivity = ({ userMainData }: { userMainData: UserMainData }) => {
+  const userData= userMainData.keyData
+  console.log(userData)
   return (
     <aside className='resume_container flex flex-col'>
-        <Keydata iconurl={caloriesIcon} value={`${keyData.calorieCount}kCal`} etiquette='Calories' />
-        <Keydata iconurl={proteinsIcon} value={`${keyData.proteinCount}g`} etiquette='Proteines' />
-        <Keydata iconurl={glucidesIcon} value={`${keyData.carbohydrateCount}g`} etiquette='Glucides' />
-        <Keydata iconurl={lipidesIcon} value={`${keyData.lipidCount}g`} etiquette='Lipides' /> 
+        <Keydata iconurl={caloriesIcon} value={`${userData.calorieCount}kCal`} etiquette='Calories' />
+        <Keydata iconurl={proteinsIcon} value={`${userData.proteinCount}g`} etiquette='Proteines' />
+        <Keydata iconurl={glucidesIcon} value={`${userData.carbohydrateCount}g`} etiquette='Glucides' />
+        <Keydata iconurl={lipidesIcon} value={`${userData.lipidCount}g`} etiquette='Lipides' /> 
     </aside>
   )
 }

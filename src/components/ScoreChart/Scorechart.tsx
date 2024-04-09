@@ -1,9 +1,10 @@
-
 import { PieChart, Pie, Cell} from 'recharts';
+import { UserMainData } from "../../model/UserMainDataModel";
 import './scorechart.css'
 
 
-const ScortChart = ({ score }: { score: number}) => {
+const ScortChart = ({ userMainData }: { userMainData: UserMainData }) => {
+  const score = userMainData.todayScore
     const data = [
         { name: 'Score', value: score * 100 },
     ];
@@ -19,8 +20,8 @@ const ScortChart = ({ score }: { score: number}) => {
               cy="50%"
               startAngle={80}
               endAngle={360 * score + 80}
-              innerRadius={"95%"}
-              outerRadius={"105%"}
+              innerRadius={"87%"}
+              outerRadius={"100%"}
               dataKey="value"
               cornerRadius={10}
               fill="#8884d8"

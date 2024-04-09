@@ -7,9 +7,7 @@
 export async function RetrieveData(url: string | URL):Promise<unknown> {
     try{
         const response = await fetch(url)
-        console.log(response)
         const data = await response.json()
-        console.log(data)
         return data.data
     } catch {
         console.log('Erreur appel api')

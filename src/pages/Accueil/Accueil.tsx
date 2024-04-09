@@ -8,6 +8,7 @@ import Usertitle from "../../components/UserTitle/Usertitle";
 import './accueil.css'
 import { UserData } from "../../model/UserDataModel";
 import { RetrieveUserActivity, RetrieveUserAverageSessions, RetrieveUserData, RetrieveUserPerformance } from "../../api/Api";
+import ChartRadar from "../../components/RadarChart/RadarChart";
 
 
 const Accueil = () => {
@@ -34,11 +35,12 @@ const Accueil = () => {
               <div className="leftstat_container">
               {state!== null &&<Dailybarchat userActivity={state.userActivity}/>}
                 <div className="three_container flex row">
-                  <ScoreChart score ={0.12} />
+                {state!== null &&<ChartRadar UserPerformance={state.userPerformance}/>}
+                  {state!== null &&<ScoreChart userMainData={state.userMainData}/>}
                 </div>
               </div>
               <div className="rightstat_container">
-                <Resumeactivity/>
+              {state!== null &&<Resumeactivity userMainData={state.userMainData}/>}
               </div>
             </div>
           </div>

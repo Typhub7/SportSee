@@ -1,7 +1,7 @@
 .pagecontent_container {
     flex-grow: 1;
     overflow :hidden;
-    margin-top: 90px;
+    margin-top: 60px;
     margin-left: 10%;
     margin-right: 10%;
 }

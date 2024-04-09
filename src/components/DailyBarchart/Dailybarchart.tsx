@@ -1,8 +1,9 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { UserActivityData } from "../../model/UserActivityModel";
 import './dailybarchart.css'
 
-//{["dataMin - 2", "dataMax + 1"]}
-const Dailybarchart = ({ userActivity }: { userActivity: any }) => {
+
+const Dailybarchart = ({ userActivity }: { userActivity: UserActivityData }) => {
    const userSessions = userActivity.sessions;
   console.log(userSessions)
 
@@ -14,7 +15,7 @@ const Dailybarchart = ({ userActivity }: { userActivity: any }) => {
         tickMargin={14} tickFormatter={(value) => parseInt(value.substring(8)).toString()}/>
       <YAxis yAxisId="ybar-left" orientation="left" dataKey="calories" tickCount={3} hide={true}/>
       <YAxis yAxisId="ybar-right" orientation="right" dataKey="kilogram" axisLine={false} tickLine={false} tickCount={3} tickMargin={20}
-        minTickGap={16} domain={[74,82]}/> 
+        minTickGap={16} domain={["dataMin - 2", "dataMax + 1"]}/> 
       <Legend verticalAlign="top" content={<CustomLegend />} />
       <Tooltip 
         offset={40}
