@@ -34,7 +34,7 @@ const Accueil = () => {
           <Submenu />
           <div className="pagecontent_container grow overflow-hidden">
           {state!== null &&<Usertitle name={state.userMainData.userInfos.firstName} greetings={'Félicitation ! Vous avez explosé vos objectifs hier 👏'}/>}
-            <div className="allstat_container flex row ">
+            <div className="allstat_container flex row justify-around ">
               <div className="leftstat_container">
               {state!== null &&<Dailybarchat userActivity={state.userActivity}/>}
                 <div className="three_container flex row">

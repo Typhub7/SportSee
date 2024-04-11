@@ -1,11 +1,17 @@
 .averagesessionchart_container {
+    position: relative;
     background-color: red;
     border-radius: 0.375rem;
-    
-    
+       
 }
 
 .average_title {
+    position: absolute;
+    top : 25px;
+    left: 34px;
+    width: 147px;
     font-size: 0.938rem;
+    color: white;
+    opacity: 0.5;
 
 }
