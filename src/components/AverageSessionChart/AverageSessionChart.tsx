@@ -47,7 +47,8 @@ const AverageChart = ({ userAverageSessions }: { userAverageSessions: UserAverag
                     <stop offset='100%' stopColor="rgba(255, 255, 255, 1)" />
                 </linearGradient>
             </defs>
-            <Line 
+            <Line
+                xAxisId = "courbe"
                 type="natural" 
                 dataKey="sessionLength" 
                 stroke='url(#lineGradient)'
@@ -56,28 +57,43 @@ const AverageChart = ({ userAverageSessions }: { userAverageSessions: UserAverag
                 activeDot={{ fill: 'white', r: 4, stroke: 'rgba(255,255,255,0.3)', strokeWidth: 8 }}
             />
 
+            <XAxis
+                xAxisId = "courbe"
+                dataKey='day'
+                padding={{ left: -5, right: -5 }}
+                hide={true}
+            />
+
+            <Line 
+                xAxisId = "axe"
+                dataKey="sessionLength" 
+                dot={false}
+                activeDot={false}
+                hide={true}
+            />
+
+            <XAxis
+                xAxisId = "axe"
+                dataKey='day'
+                padding={{ left: 10, right: 10 }}
+                axisLine={false}
+                tickLine={false}
+                interval="preserveEnd"
+                tick={{ opacity: 0.5, fill: '#FFFFFF' }}
+                hide={false}
+            />
+            
+            <YAxis
+                hide={true}
+                dataKey='sessionLength'
+                domain={([dataMin, dataMax]) => { const demiAmplitude = (dataMax - dataMin) / 2; return [(dataMin - demiAmplitude ), (dataMax + demiAmplitude +10)] }} 
+            />
+            
             <Tooltip
                 content={<CustomTooltip />}
                 cursor={<CustomCursor points={[]} width={258} />}
                 wrapperStyle={{ background: "#FFFFFF", outline: "none" }}
             />
-            
-            <XAxis 
-                dataKey='day'
-                axisLine={false}
-                tickLine={false}
-
-                interval="preserveEnd"
-        
-                tick={{ opacity: 0.5, fill: '#FFFFFF' }}
-            />
-            <YAxis
-                hide={true}
-                dataKey='sessionLength'
-                domain={([dataMin, dataMax]) => { const demiAmplitude = (dataMax - dataMin) / 2; return [(dataMin - demiAmplitude), (dataMax + demiAmplitude)] }} />
-
-
-            
 
         </LineChart>
         <div className="DurationSessionsLineChart__labels">

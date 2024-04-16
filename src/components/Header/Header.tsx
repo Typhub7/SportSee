@@ -8,7 +8,7 @@ import Navigation from '../Navigation/Navigation';
  */
 const Header: React.FC = () => {
     return (
-        <header className='header flex flex-row justify-between items-center bg-gray-900 w-full'>           
+        <header className='header flex flex-row justify-between items-center  w-full'>           
             <div className='logo_container'>
                 <img className='mt-4 mr-7 ml-7 mb-3' src={logo} alt="Logo de SpotSee" />
             </div>

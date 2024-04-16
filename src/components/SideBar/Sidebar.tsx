@@ -2,12 +2,12 @@ import halteres from "../../assets/icone-halteres.png";
 import relaxation from "../../assets/icone-relaxation.png";
 import natation from "../../assets/icone-natation.png";
 import velo from "../../assets/icone-velo.png";
-import './submenu.css'
+import './sidebar.css'
 
 
-const Submenu = () => {
+const Sidebar = () => {
   return (
-    <div className='side_container bg-black w-28'>
+    <div className='side_container w-28'>
         <div className="sport_container">
             <img className='w-16' src={relaxation} alt="bouton relaxation" />
             <img className='w-16' src={natation} alt="bouton natation" />
@@ -21,4 +21,4 @@ const Submenu = () => {
   )
 }
 
-export default Submenu
+export default Sidebar

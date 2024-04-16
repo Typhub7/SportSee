@@ -5,8 +5,13 @@
     margin: 0 0 38px 31px;
     padding: 32px;
     gap: 32px;
-    background-color: #FBFBFB;
+    background-color: #FBFBFB;   
 }
+
+.img_style {
+    width: 60px;
+}
+
 .value_style {
     font-size: 1.5rem;
     font-weight: bold;

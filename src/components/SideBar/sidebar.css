@@ -1,9 +1,11 @@
 .side_container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: auto;
+    min-height: 92vh;
     align-items: center;
     position: relative;
+    background-color: #020203;
 }
 
 .sport_container {
@@ -11,7 +13,7 @@
     flex-direction : column;
     gap : 20px;
     position: absolute;
-    top: 30%;
+    top: 25%;
 }
 
 .copyright {

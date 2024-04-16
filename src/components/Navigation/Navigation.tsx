@@ -9,19 +9,19 @@ import './navigation.css'
     return (
         <ul className='navigation flex justify-around text-white'>
             <li>
-                <Link to={'/accueil'} className='text-2xl text-white'>Accueil</Link>
+                <Link to={''} className='text-2xl text-white'>Accueil</Link>
             </li>
 
             <li>
-                <Link to={'/accueil'} className='text-2xl text-white'>Profil</Link>
+                <Link to={''} className='text-2xl text-white'>Profil</Link>
             </li>
 
             <li>
-                <Link to={'/accueil'} className='text-2xl text-white'>Réglage</Link>
+                <Link to={''} className='text-2xl text-white'>Réglage</Link>
             </li>
 
             <li>
-                <Link to={'/accueil'} className='text-2xl text-white'>Communauté</Link>
+                <Link to={''} className='text-2xl text-white'>Communauté</Link>
             </li>
         </ul>
         

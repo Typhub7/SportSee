@@ -9,7 +9,7 @@ const ChartRadar = ({ UserPerformance }: { UserPerformance: UserPerformanceData 
 	return (
 		<div className='radarChartContainer'>
             <RadarChart width={258} height={263} cx="50%" cy="50%" innerRadius="10%" outerRadius="73%" data={mappedUserData.performance}>
-                <PolarGrid radialLines={false} />
+                <PolarGrid radialLines={false} polarRadius={[9,20,45,65,90]} />
                 <PolarAngleAxis dataKey="kind" dy={3} tickSize={10} tick={{ fill: 'white' }} />
                 <Radar name="kind" dataKey="value" fill="red" fillOpacity={0.7} />
             </RadarChart>

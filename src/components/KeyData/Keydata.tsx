@@ -11,7 +11,7 @@ interface KeyDataProps {
 const Keydata : React.FC<KeyDataProps> = ({iconurl,value,etiquette}) => {
   return (
     <div className='keydata_container flex row'>
-        <img src={iconurl} alt={`${etiquette} icon`}/>
+        <img src={iconurl} alt={`${etiquette} icon`} className='img_style'/>
         <div className='flex flex-col justify-around'>
             <p className='value_style'>{value}</p>
             <p className='etiquette_style'>{etiquette}</p>

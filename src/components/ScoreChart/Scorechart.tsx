@@ -4,7 +4,7 @@ import './scorechart.css'
 
 
 const ScortChart = ({ userMainData }: { userMainData: UserMainData }) => {
-  const score = userMainData.todayScore
+  const score = userMainData.todayScore !== undefined ? userMainData.todayScore : userMainData.score!;
     const data = [
         { name: 'Score', value: score * 100 },
     ];

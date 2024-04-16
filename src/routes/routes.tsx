@@ -17,8 +17,9 @@ interface RouteData {
 function routes()  {
   // Crée un BrowserRouter avec les routes spécifiées 
   const router = createBrowserRouter([
-      { path: "/", element: <Accueil />, errorElement: <ErrorPage />},
-      { path: "/accueil", element: <Accueil />, errorElement: <ErrorPage />},
+      { path: "", element: <Accueil />, errorElement: <ErrorPage />},
+      { path: "/:userId", element: <Accueil />, errorElement: <ErrorPage />},
+      { path: "/accueil", element: null, errorElement: <ErrorPage />},
       { path: "/profil", element: null, errorElement: <ErrorPage />},
       { path: "/reglages", element: null, errorElement: <ErrorPage />},
       { path: "/communaute", element: null, errorElement: <ErrorPage />},

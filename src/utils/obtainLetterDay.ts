@@ -1,3 +1,5 @@
+// Not use but ready to deploy
+
 function getDayLetter(dateString: string): string {
     // Créer un objet Date à partir de la chaîne de caractères de la date
     const date = new Date(dateString);

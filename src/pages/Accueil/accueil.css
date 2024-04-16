@@ -1,22 +1,26 @@
 .pagecontent_container {
-    flex-grow: 1;
-    overflow :hidden;
-    margin-top: 60px;
+    overflow: hidden;
+    margin-top: 50px;
     margin-left: 10%;
     margin-right: 10%;
+    max-width: 1250px; 
+    width: 100%; 
 }
 
 .allstat_container {
-    margin-top: 77px;
-    
+    margin-top: 77px;    
 }
 
 .main_container {
-    height: 100vh;
+    height: 100%;
 }
 
 .three_container {
     justify-content: space-between;
     margin-top: 30px;
     height: 263px;
+}
+
+.accueil_container {
+    min-height: 100vh;
 }
