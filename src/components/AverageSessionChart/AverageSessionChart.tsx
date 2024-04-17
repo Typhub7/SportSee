@@ -4,6 +4,13 @@ import formatAverageData from "../../utils/AddDayAverageData";
 import getDayLetter from "../../utils//obtainLetterDay"
 import './averagesessionchart.css'
 
+/**
+ * Custom tooltip component for the average session duration chart.
+ * 
+ * @param active Whether the tooltip is active or not.
+ * @param payload The payload data of the tooltip.
+ * @returns A custom tooltip component.
+ */
 const CustomTooltip = ({ active, payload }:TooltipProps<number, string>) => {
     if (active && payload && payload.length)  {
       return (
@@ -18,6 +25,13 @@ interface CustomCursorProps {
     width: number;
 }
 
+/**
+ * Custom cursor component for the average session duration chart.
+ * 
+ * @param points Array of points containing x and y coordinates.
+ * @param width The width of the chart.
+ * @returns A custom cursor component.
+ */
 const CustomCursor = ({ points, width }: CustomCursorProps) => {
     const rectangleWidth = width - points[0].x
 return (
@@ -31,6 +45,12 @@ return (
     );
 };
 
+/**
+ * Displays an average session duration chart.
+ * 
+ * @param userAverageSessions The average session data to be displayed on the chart.
+ * @returns A chart component displaying the average session duration.
+ */
 
 const AverageChart = ({ userAverageSessions }: { userAverageSessions: UserAverageSessionsData }) => {
     const userSessions = formatAverageData(userAverageSessions);

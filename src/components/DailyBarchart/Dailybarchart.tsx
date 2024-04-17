@@ -2,7 +2,12 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import { UserActivityData } from "../../model/UserActivityModel";
 import './dailybarchart.css'
 
-
+/**
+ * Displays a daily bar chart representing user activity.
+ * 
+ * @param userActivity The user activity data to be displayed on the chart.
+ * @returns A bar chart component displaying the daily user activity.
+ */
 const Dailybarchart = ({ userActivity }: { userActivity: UserActivityData }) => {
    const userSessions = userActivity.sessions;
   console.log(userSessions)
@@ -30,6 +35,12 @@ const Dailybarchart = ({ userActivity }: { userActivity: UserActivityData }) => 
   );
 }
 
+/**
+ * Custom tooltip component for the daily bar chart.
+ * 
+ * @param data The payload data of the tooltip.
+ * @returns A custom tooltip component.
+ */
 // documentation de recharts implique de typer en any
 // eslint-disable-next-line @typescript-eslint/no-explicit-any 
 const CustomTooltip = (data: any) => {
@@ -48,6 +59,11 @@ const CustomTooltip = (data: any) => {
   }
 };
 
+/**
+ * Custom legend component for the daily bar chart.
+ * 
+ * @returns A custom legend component.
+ */
 const CustomLegend: React.FC = () => {
 	return (
 		<div className="dailyBarChart_legend flex flex-row justify-between">

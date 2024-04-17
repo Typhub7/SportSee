@@ -3,6 +3,12 @@ import { UserPerformanceData } from "../../model/UserPerformanceModel";
 import { mapUserPerformance } from '../../utils/performanceUtils';
 import './radarchart.css'
 
+/** 
+ * Radar chart component displaying user performance data.
+ * 
+ * @param UserPerformance The user performance data to be displayed on the chart.
+ * @returns {JSX.Element} The radar chart component.
+ */
 const ChartRadar = ({ UserPerformance }: { UserPerformance: UserPerformanceData }) => {
     const mappedUserData = mapUserPerformance(UserPerformance)
     

@@ -1,0 +1,28 @@
+.error_container {
+    margin-top: 200px;
+    margin-left: 10%;
+    margin-right: 10%;
+    max-width: 1250px; 
+    width: 100%; 
+}
+
+.error_container h1 {
+    font-size: 48px;
+    color: #FF5722; /* Couleur orange vif */
+  }
+  
+  .error_container p {
+    font-size: 18px;
+    color: #333; /* Couleur de texte sombre */
+    margin-top: 20px;
+  }
+  
+  .error_container a {
+    color: #007bff; /* Couleur du lien bleu */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .error_container a:hover {
+    text-decoration: underline;
+  }

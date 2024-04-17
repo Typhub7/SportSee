@@ -6,10 +6,15 @@ import lipidesIcon from "../../assets/fat-icon.png";
 import "../Resumeactivity/resumeactivity.css"
 import { UserMainData } from "../../model/UserMainDataModel";
 
+/** 
+ * Component displaying key activity data such as calories, proteins, carbohydrates, and lipids.
+ * 
+ * @param userMainData The main user data containing key activity data.
+ * @returns {JSX.Element} The component displaying key activity data.
+ */
 
 const Resumeactivity = ({ userMainData }: { userMainData: UserMainData }) => {
   const userData= userMainData.keyData
-  console.log(userData)
   return (
     <aside className='resume_container flex flex-col'>
         <Keydata iconurl={caloriesIcon} value={`${userData.calorieCount}kCal`} etiquette='Calories' />

@@ -4,7 +4,11 @@ import natation from "../../assets/icone-natation.png";
 import velo from "../../assets/icone-velo.png";
 import './sidebar.css'
 
-
+/** 
+ * Sidebar component displaying icons for various sports activities.
+ * 
+ * @returns {JSX.Element} The sidebar component.
+ */
 const Sidebar = () => {
   return (
     <div className='side_container w-28'>

@@ -6,32 +6,42 @@ import { UserPerformanceSchema } from "../model/UserPerformanceModel"
 import { USER_MAIN_DATA , USER_ACTIVITY , USER_AVERAGE_SESSIONS , USER_PERFORMANCE} from "../mock/mockeddata.js"
 
 // Use "true" to fetch data from server or "false" to get them from mocked data
+const dataFromServer = false
 
-const dataFromServer = true
-
+/** Retrieves user data based on the provided user ID.
+ * 
+ * @param userId The ID of the user whose data is to be retrieved.
+ * @returns User data object if found, otherwise returns null.
+ */
 export const RetrieveUserData = async (userId: number) => {
     let  data : unknown 
-    // Si 
+    // Depending on the choice made, displays data from the server or mocked data
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}`)
     } else {
         data = USER_MAIN_DATA.find(user => user.id === userId)
     }
 
-    // Aucun utilisateur correspondant trouvé, retourner null
+    // If no matching user found, return null
     if (!data) {
         return null; 
     }
     
-    // Si il n'y a aucune donnée correspondant à l'id, retourner null
+    // If there is no data corresponding to the ID, return null
     try {
         const userData = UserMainDataSchema.parse(data);
         return userData;
     } catch (error) {
         console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
-        return null; // En cas d'erreur d'analyse, retourner null
+        return null; // In case of parsing error, return null
     }
 };
+
+/** Retrieves user activity based on the provided user ID.
+ * 
+ * @param userId The ID of the user whose data is to be retrieved.
+ * @returns User data object if found, otherwise returns null.
+ */
 
 export const RetrieveUserActivity = async (userId: number) => {
     let  data : unknown 
@@ -42,7 +52,7 @@ export const RetrieveUserActivity = async (userId: number) => {
     }
 
     if (!data) {
-        return null; // Aucun utilisateur correspondant trouvé, retourner null
+        return null;
     }
     
     try {
@@ -50,10 +60,15 @@ export const RetrieveUserActivity = async (userId: number) => {
         return userData;
     } catch (error) {
         console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
-        return null; // En cas d'erreur d'analyse, retourner null
+        return null; 
     }
 };
 
+/** Retrieves user average sessions data based on the provided user ID.
+ * 
+ * @param userId The ID of the user whose data is to be retrieved.
+ * @returns User data object if found, otherwise returns null.
+ */
 export const RetrieveUserAverageSessions = async (userId: number) => {
     let  data : unknown 
     if (dataFromServer) {
@@ -63,7 +78,7 @@ export const RetrieveUserAverageSessions = async (userId: number) => {
     }
 
     if (!data) {
-        return null; // Aucun utilisateur correspondant trouvé, retourner null
+        return null;
     }
     
     try {
@@ -71,10 +86,15 @@ export const RetrieveUserAverageSessions = async (userId: number) => {
         return userData;
     } catch (error) {
         console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
-        return null; // En cas d'erreur d'analyse, retourner null
+        return null; 
     }
 }
 
+/** Retrieves user performance based on the provided user ID.
+ * 
+ * @param userId The ID of the user whose data is to be retrieved.
+ * @returns User data object if found, otherwise returns null.
+ */
 export const RetrieveUserPerformance = async (userId: number) => {
     let  data : unknown 
     if (dataFromServer) {
@@ -84,7 +104,7 @@ export const RetrieveUserPerformance = async (userId: number) => {
     }
 
     if (!data) {
-        return null; // Aucun utilisateur correspondant trouvé, retourner null
+        return null;
     }
     
     try {
@@ -92,6 +112,6 @@ export const RetrieveUserPerformance = async (userId: number) => {
         return userData;
     } catch (error) {
         console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
-        return null; // En cas d'erreur d'analyse, retourner null
+        return null;
     }
 };

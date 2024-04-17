@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 import './navigation.css'
 
-/** Composant de navigation affichant des liens du menu vers différentes pages.
+/** 
+ * Navigation component displaying menu links to different pages.
  * 
- * @returns {JSX.Element} Le composant de navigation.
+ * Ready to be upgrade
+ * @returns {JSX.Element} The navigation component.
  */
+
  const Navigation: React.FC = () => {
 
     return (

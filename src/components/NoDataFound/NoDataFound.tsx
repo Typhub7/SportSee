@@ -1,7 +1,11 @@
 import React from 'react';
 import './nodatafound.css'
 
-
+/** 
+ * Component displaying a message when no data is found for the user.
+ * 
+ * @returns {JSX.Element} The component displaying the message.
+ */
 const NoDataFound: React.FC = () => {
   return (
     <div>

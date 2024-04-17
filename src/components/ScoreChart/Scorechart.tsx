@@ -2,7 +2,12 @@ import { PieChart, Pie, Cell} from 'recharts';
 import { UserMainData } from "../../model/UserMainDataModel";
 import './scorechart.css'
 
-
+/** 
+ * Score chart component displaying the user's score and progress towards their goal.
+ * 
+ * @param userMainData The main user data containing the score information.
+ * @returns {JSX.Element} The score chart component.
+ */
 const ScortChart = ({ userMainData }: { userMainData: UserMainData }) => {
   const score = userMainData.todayScore !== undefined ? userMainData.todayScore : userMainData.score!;
     const data = [

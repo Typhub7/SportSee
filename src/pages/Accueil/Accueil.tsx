@@ -16,13 +16,19 @@ import { RetrieveUserActivity, RetrieveUserAverageSessions, RetrieveUserData, Re
 import NoDataFound from "../../components/NoDataFound/NoDataFound";
 
 const Accueil = () => {
-  /*  Partie pour tester les id génère le bouton de test 
-      Utiliser useState pour gérer le nombre de clics
-      Définir une séquence d'IDs
-      Calculer l'index du tableau correspondant à l'ID utilisateur en fonction du nombre de clics */
+  /** 
+  * Test section for generating user IDs and handling button clicks.
+  * 
+  * Utilizes useState to manage the number of clicks and defines a sequence of user IDs.
+  * Calculates the index of the array corresponding to the user ID based on the number of clicks.
+  */
   const [clickCount, setClickCount] = useState(0); // 
-  const userIDs = [19, 12, 18, 25];
+  const userIDs = [ 12, 18, 25];
   const userId = userIDs[clickCount % userIDs.length];
+  const handleButtonClick = () => {
+    // Increment the number of clicks every time the button is clicked.
+    setClickCount(clickCount + 1);
+  };
 
 
   const [state, setstate] = useState<{ 
@@ -48,11 +54,9 @@ const Accueil = () => {
   useEffect (() => {
     fetchData()
   },[userId])
+  //}, [userId, fetchData]);
 
-  const handleButtonClick = () => {
-    // Incrémenter le nombre de clics à chaque fois que le bouton est cliqué
-    setClickCount(clickCount + 1);
-  };
+
   
   return (
     <div className='accueil_container'>

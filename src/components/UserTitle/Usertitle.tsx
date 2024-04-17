@@ -5,6 +5,13 @@ interface TitleProps {
 	greetings?: string;
 }
 
+/** 
+ * User title component displaying a personalized greeting for the user.
+ * 
+ * @param name The name of the user.
+ * @param greetings (Optional) Additional greetings for the user.
+ * @returns {JSX.Element} The user title component.
+ */
 const Usertitle = ({ name, greetings }: TitleProps) => {
   return (
     <div>
