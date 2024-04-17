@@ -7,76 +7,91 @@ import { USER_MAIN_DATA , USER_ACTIVITY , USER_AVERAGE_SESSIONS , USER_PERFORMAN
 
 // Use "true" to fetch data from server or "false" to get them from mocked data
 
-const dataFromServer = false;
+const dataFromServer = true
 
 export const RetrieveUserData = async (userId: number) => {
-    let  data : unknown ;
+    let  data : unknown 
+    // Si 
     if (dataFromServer) {
-        data = await RetrieveData(`http://localhost:3000/user/${userId}`);
+        data = await RetrieveData(`http://localhost:3000/user/${userId}`)
     } else {
-        const userFromMainData = USER_MAIN_DATA.find(user => user.id === userId);
-        // Vérifie si l'utilisateur existe dans USER_MAIN_DATA
-        if (userFromMainData) {
-            data = userFromMainData;
-        } else {
-            // Gère le cas où aucun utilisateur n'est trouvé
-            throw new Error(`Aucune donnée disponible pour l'utilisateur ${userId} `);
-        }
+        data = USER_MAIN_DATA.find(user => user.id === userId)
     }
-    const userData = UserMainDataSchema.parse(data);
-    return userData;
+
+    // Aucun utilisateur correspondant trouvé, retourner null
+    if (!data) {
+        return null; 
+    }
+    
+    // Si il n'y a aucune donnée correspondant à l'id, retourner null
+    try {
+        const userData = UserMainDataSchema.parse(data);
+        return userData;
+    } catch (error) {
+        console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
+        return null; // En cas d'erreur d'analyse, retourner null
+    }
 };
 
 export const RetrieveUserActivity = async (userId: number) => {
-    let  data : unknown ;
+    let  data : unknown 
     if (dataFromServer) {
-        data = await RetrieveData(`http://localhost:3000/user/${userId}/activity`);
+        data = await RetrieveData(`http://localhost:3000/user/${userId}/activity`)
     } else {
-        const userFromActivity = USER_ACTIVITY.find(user => user.userId === userId);
-        // Vérifie si l'utilisateur existe dans USER_ACTIVITY
-        if (userFromActivity) {
-            data = userFromActivity;
-        } else {
-            // Gère le cas où aucun utilisateur n'est trouvé
-            throw new Error(`User with ID ${userId} not found in USER_MAIN_DATA`);
-        }
+        data = USER_ACTIVITY.find(user => user.userId === userId)
     }
-    const userData = UserActivitySchema.parse(data);
-    return userData;
+
+    if (!data) {
+        return null; // Aucun utilisateur correspondant trouvé, retourner null
+    }
+    
+    try {
+        const userData = UserActivitySchema.parse(data);
+        return userData;
+    } catch (error) {
+        console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
+        return null; // En cas d'erreur d'analyse, retourner null
+    }
 };
 
 export const RetrieveUserAverageSessions = async (userId: number) => {
-    let  data : unknown ;
+    let  data : unknown 
     if (dataFromServer) {
-        data = await RetrieveData(`http://localhost:3000/user/${userId}/average-sessions`);
+        data = await RetrieveData(`http://localhost:3000/user/${userId}/average-sessions`)
     } else {
-        const userFromAverageSessions = USER_AVERAGE_SESSIONS.find(user => user.userId === userId);
-        // Vérifie si l'utilisateur existe dans USER_AVERAGE_SESSIONS
-        if (userFromAverageSessions) {
-            data = userFromAverageSessions;
-        } else {
-            // Gère le cas où aucun utilisateur n'est trouvé
-            throw new Error(`User with ID ${userId} not found in USER_MAIN_DATA`);
-        }
+         data = USER_AVERAGE_SESSIONS.find(user => user.userId === userId)
     }
-    const userData = UserAverageSessionsSchema.parse(data);
-    return userData;
-};
+
+    if (!data) {
+        return null; // Aucun utilisateur correspondant trouvé, retourner null
+    }
+    
+    try {
+        const userData = UserAverageSessionsSchema.parse(data);
+        return userData;
+    } catch (error) {
+        console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
+        return null; // En cas d'erreur d'analyse, retourner null
+    }
+}
 
 export const RetrieveUserPerformance = async (userId: number) => {
-    let  data : unknown ;
+    let  data : unknown 
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}/performance`);
     } else {
-        const userFromPerformance = USER_PERFORMANCE.find(user => user.userId === userId);
-        // Vérifie si l'utilisateur existe dans USER_PERFORMANCE
-        if (userFromPerformance) {
-            data = userFromPerformance;
-        } else {
-            // Gère le cas où aucun utilisateur n'est trouvé
-            throw new Error(`User with ID ${userId} not found in USER_MAIN_DATA`);
-        }
+        data = USER_PERFORMANCE.find(user => user.userId === userId);
     }
-    const userData = UserPerformanceSchema.parse(data);
-    return userData;
+
+    if (!data) {
+        return null; // Aucun utilisateur correspondant trouvé, retourner null
+    }
+    
+    try {
+        const userData = UserPerformanceSchema.parse(data);
+        return userData;
+    } catch (error) {
+        console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
+        return null; // En cas d'erreur d'analyse, retourner null
+    }
 };

@@ -4,8 +4,6 @@
  * @returns {Promise<unknown>} A Promise resolving to the fetched data or an error
  */
 
-
-
 export async function RetrieveData(url: string | URL):Promise<unknown> {
     try{
         const response = await fetch(url)

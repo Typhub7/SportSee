@@ -6,6 +6,7 @@ import './navigation.css'
  * @returns {JSX.Element} Le composant de navigation.
  */
  const Navigation: React.FC = () => {
+
     return (
         <ul className='navigation flex justify-around text-white'>
             <li>

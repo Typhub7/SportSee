@@ -24,3 +24,20 @@
 .accueil_container {
     min-height: 100vh;
 }
+
+.floating_button {
+    position: fixed;
+    z-index: 100;
+    right: 20px;
+    bottom: 10px;
+    background-color: #ff0000; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    padding: 5px 20px; /* Espacement intérieur */
+    border-radius: 10px; /* Forme de bouton rond */
+    cursor: pointer; /* Curseur au survol */
+    transition: background-color 0.3s ease; /* Transition de couleur de fond */
+}
+
+.floating_button:hover {
+    background-color: #7e1212; /* Changement de couleur de fond au survol */
+}
