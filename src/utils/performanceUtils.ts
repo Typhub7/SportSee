@@ -1,5 +1,6 @@
 import { UserPerformanceData } from "../model/UserPerformanceModel";
 
+// Function to translate performance kind
 function convert(string:string) {
     let traduct = string;
 
@@ -27,14 +28,20 @@ function convert(string:string) {
     return traduct;
 }
 
+/** Function to map user performance data and translate the performance kind.
+ * @param {UserPerformanceData} userData - The user performance data.
+ * @returns {Object} The mapped user performance data with translated performance kinds.
+ */
+
 export function mapUserPerformance(userData : UserPerformanceData) {
+    // Translate performance kind
     const kindTranslated = Object.values(userData.kind).map(convert);
-    console.log(kindTranslated)
+
+    // Map performance data with translated performance kinds
     const performance = userData.data.map((item, index) => ({
         value: item.value,
         kind: kindTranslated[index],
     })).reverse();
-    console.log(performance)
     
     return {
         kind: kindTranslated,

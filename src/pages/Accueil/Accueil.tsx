@@ -16,6 +16,7 @@ import { RetrieveUserActivity, RetrieveUserAverageSessions, RetrieveUserData, Re
 import NoDataFound from "../../components/NoDataFound/NoDataFound";
 
 const Accueil = () => {
+
   /** 
   * Test section for generating user IDs and handling button clicks.
   * 
@@ -30,15 +31,24 @@ const Accueil = () => {
     setClickCount(clickCount + 1);
   };
 
-
+  /** Represents the state containing user activity, average sessions, performance, and main data.
+  * @param {UserActivityData | null} userActivity - The user activity data.
+  * @param {UserAverageSessionsData | null} userAverageSessions - The user average sessions data.
+  * @param {UserPerformanceData | null} userPerformance - The user performance data.
+  * @param {UserMainData | null} userMainData - The user main data.
+  */
   const [state, setstate] = useState<{ 
     userActivity: UserActivityData | null; 
     userAverageSessions: UserAverageSessionsData | null; 
     userPerformance: UserPerformanceData | null; 
     userMainData: UserMainData | null; 
-} | null>(null);
+  } | null>(null);
   
-  const fetchData = async () => {
+  /**
+   * Fetches user data asynchronously.
+   * @returns {Promise<void>} A promise that resolves when the data is fetched.
+   */
+  const fetchData = async (): Promise<void> => {
       const userActivity = await RetrieveUserActivity(userId)
       const userAverageSessions = await RetrieveUserAverageSessions(userId)
       const userPerformance = await RetrieveUserPerformance(userId)
@@ -53,12 +63,10 @@ const Accueil = () => {
   
   useEffect (() => {
     fetchData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[userId])
-  //}, [userId, fetchData]);
 
-
-  
-  return (
+    return (
     <div className='accueil_container'>
         <Header />
         <div className="main_container flex column">
@@ -84,7 +92,7 @@ const Accueil = () => {
           </div>
           {state ==null && <NoDataFound />}
         </div> 
-        {/* Bouton de toggle d'id en survol dans l'angle en bas à droite */}
+        {/* Red testing button on lower right of the screen */}
         <div className="floating_button" onClick={handleButtonClick}>
           Id actuel : {userId}
         </div>    

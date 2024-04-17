@@ -1,16 +1,21 @@
-// Not use but ready to deploy
+
+/** Function to get the letter corresponding to the day of the week from a given date string.
+ * @param {string} dateString - The date string.
+ * @returns {string} The letter corresponding to the day of the week.
+ *  Not use but ready to deploy if needed
+ */
 
 function getDayLetter(dateString: string): string {
-    // Créer un objet Date à partir de la chaîne de caractères de la date
+    // Create a Date object from the date string
     const date = new Date(dateString);
 
-    // Tableau contenant les noms des jours de la semaine 
+    // Array containing the names of the days of the week
     const daysOfWeek = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
 
-    // Utiliser getDay() pour obtenir le numéro du jour de la semaine (0 pour dimanche, 1 pour lundi, ..., 6 pour samedi)
+    // Use getDay() to get the day of the week index (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
     const dayOfWeekIndex = date.getDay();
 
-    // Retourner la lettre du jour correspondant
+    // Return the letter corresponding to the day of the week
     return daysOfWeek[dayOfWeekIndex];
 }
 
