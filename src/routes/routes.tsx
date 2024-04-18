@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createHashRouter, RouterProvider} from "react-router-dom";
 import Accueil from '../pages/Accueil/Accueil';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
@@ -8,7 +8,8 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
  */
 function routes()  {
   // Create a BrowserRouter with the specified routes
-  const router = createBrowserRouter([
+  // change with createHashRouter for Gh-pages
+  const router = createHashRouter([
       { path: "/",element: <Accueil /> , errorElement: <ErrorPage />},
       { path: "/accueil", element: null},
       { path: "/profil", element: null},
