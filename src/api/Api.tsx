@@ -1,9 +1,10 @@
 import { RetrieveData } from "./RetrieveData";
-import { UserMainDataSchema } from "../model/UserMainDataModel"
-import { UserActivitySchema } from "../model/UserActivityModel"
-import { UserAverageSessionsSchema } from "../model/UserAverageSessionsModel"
-import { UserPerformanceSchema } from "../model/UserPerformanceModel"
+import { UserMainData, UserMainDataSchema } from "../model/UserMainDataModel"
+import { UserActivityData, UserActivitySchema } from "../model/UserActivityModel"
+import { UserAverageSessionsData, UserAverageSessionsSchema } from "../model/UserAverageSessionsModel"
+import { UserPerformanceData, UserPerformanceSchema } from "../model/UserPerformanceModel"
 import { USER_MAIN_DATA , USER_ACTIVITY , USER_AVERAGE_SESSIONS , USER_PERFORMANCE} from "../mock/mockeddata.js"
+import { UserError } from "../model/UserError.js";
 
 // Use "true" to fetch data from server or "false" to get them from mocked data
 const dataFromServer = false
@@ -13,7 +14,7 @@ const dataFromServer = false
  * @param userId The ID of the user whose data is to be retrieved.
  * @returns User data object if found, otherwise returns null.
  */
-export const RetrieveUserData = async (userId: number) => {
+export const RetrieveUserData = async (userId: number):Promise<[UserError | null , UserMainData | null] > => {
     let  data : unknown 
     // Depending on the choice made, displays data from the server or mocked data
     if (dataFromServer) {
@@ -22,18 +23,18 @@ export const RetrieveUserData = async (userId: number) => {
         data = USER_MAIN_DATA.find(user => user.id === userId)
     }
 
-    // If no matching user found, return null
+    // If there are no data from the server, return a message
     if (!data) {
-        return null; 
+        return [{message: "Erreur de collecte des données du serveur"} , null]
     }
     
-    // If there is no data corresponding to the ID, return null
-    try {
-        const userData = UserMainDataSchema.parse(data);
-        return userData;
-    } catch (error) {
-        console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
-        return null; // In case of parsing error, return null
+    // If there is a problem with the data, return another message
+    const userData = UserMainDataSchema.safeParse(data);
+    if (userData.success) {
+        return [ null, userData.data]
+    }
+    else {
+        return [{message : "Les données globales sont corrompues" } , null]
     }
 };
 
@@ -43,7 +44,7 @@ export const RetrieveUserData = async (userId: number) => {
  * @returns User data object if found, otherwise returns null.
  */
 
-export const RetrieveUserActivity = async (userId: number) => {
+export const RetrieveUserActivity = async (userId: number):Promise<[UserError | null , UserActivityData | null] > => {
     let  data : unknown 
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}/activity`)
@@ -52,15 +53,15 @@ export const RetrieveUserActivity = async (userId: number) => {
     }
 
     if (!data) {
-        return null;
+        return [{message: "Erreur de collecte des données du serveur"} , null];
     }
     
-    try {
-        const userData = UserActivitySchema.parse(data);
-        return userData;
-    } catch (error) {
-        console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
-        return null; 
+    const userData = UserActivitySchema.safeParse(data);
+    if (userData.success) {
+        return [ null, userData.data]
+    }
+    else {
+        return [{message : "Les données d'activité sont corrompues" } , null]
     }
 };
 
@@ -69,7 +70,7 @@ export const RetrieveUserActivity = async (userId: number) => {
  * @param userId The ID of the user whose data is to be retrieved.
  * @returns User data object if found, otherwise returns null.
  */
-export const RetrieveUserAverageSessions = async (userId: number) => {
+export const RetrieveUserAverageSessions = async (userId: number):Promise<[UserError | null , UserAverageSessionsData | null] > => {
     let  data : unknown 
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}/average-sessions`)
@@ -78,15 +79,15 @@ export const RetrieveUserAverageSessions = async (userId: number) => {
     }
 
     if (!data) {
-        return null;
+        return [{message: "Erreur de collecte des données du serveur"} , null]
     }
     
-    try {
-        const userData = UserAverageSessionsSchema.parse(data);
-        return userData;
-    } catch (error) {
-        console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
-        return null; 
+    const userData = UserAverageSessionsSchema.safeParse(data);
+    if (userData.success) {
+        return [ null, userData.data]
+    }
+    else {
+        return [{message : "Les données de sessions moyennes sont corrompues" } , null]
     }
 }
 
@@ -95,7 +96,7 @@ export const RetrieveUserAverageSessions = async (userId: number) => {
  * @param userId The ID of the user whose data is to be retrieved.
  * @returns User data object if found, otherwise returns null.
  */
-export const RetrieveUserPerformance = async (userId: number) => {
+export const RetrieveUserPerformance = async (userId: number):Promise<[UserError | null , UserPerformanceData | null] >  => {
     let  data : unknown 
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}/performance`);
@@ -104,14 +105,15 @@ export const RetrieveUserPerformance = async (userId: number) => {
     }
 
     if (!data) {
-        return null;
+        return [{message: "Erreur de collecte des données du serveur"} , null]
     }
     
-    try {
-        const userData = UserPerformanceSchema.parse(data);
-        return userData;
-    } catch (error) {
-        console.error("Erreur lors de l'analyse des données d'activité utilisateur:", error);
-        return null;
+    
+    const userData = UserPerformanceSchema.safeParse(data);
+    if (userData.success) {
+        return [ null, userData.data]
+    }
+    else {
+        return [{message : "Les données globales sont corrompues" } , null]
     }
 };

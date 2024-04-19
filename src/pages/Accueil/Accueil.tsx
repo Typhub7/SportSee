@@ -14,6 +14,7 @@ import { UserAverageSessionsData } from "../../model/UserAverageSessionsModel";
 import { UserActivityData } from "../../model/UserActivityModel";
 import { RetrieveUserActivity, RetrieveUserAverageSessions, RetrieveUserData, RetrieveUserPerformance } from "../../api/Api";
 import NoDataFound from "../../components/NoDataFound/NoDataFound";
+import { UserError } from "../../model/UserError";
 
 const Accueil = () => {
 
@@ -32,7 +33,7 @@ const Accueil = () => {
   };
 
   /** Represents the state containing user activity, average sessions, performance, and main data.
-  * @param {UserActivityData | null} userActivity - The user activity data.
+  * @param {UserActivityData | UserError} userActivity - The user activity data.
   * @param {UserAverageSessionsData | null} userAverageSessions - The user average sessions data.
   * @param {UserPerformanceData | null} userPerformance - The user performance data.
   * @param {UserMainData | null} userMainData - The user main data.
@@ -43,19 +44,47 @@ const Accueil = () => {
     userPerformance: UserPerformanceData | null; 
     userMainData: UserMainData | null; 
   } | null>(null);
+
+  const [error, setError] = useState <UserError | null>(null)
   
+   
   /**
    * Fetches user data asynchronously.
    * @returns {Promise<void>} A promise that resolves when the data is fetched.
    */
   const fetchData = async (): Promise<void> => {
+      setError(null)
       const userActivity = await RetrieveUserActivity(userId)
       const userAverageSessions = await RetrieveUserAverageSessions(userId)
       const userPerformance = await RetrieveUserPerformance(userId)
       const userMainData = await RetrieveUserData(userId)
+      const userMainDataNoError = userMainData[1]
+      const userMainDataError = userMainData[0]
+      const userActivityDataNoError = userActivity[1]
+      const userActivityDataError = userActivity[0]
+      const userAverageSessionsNoError = userAverageSessions[1]
+      const userAverageSessionsError = userAverageSessions[0]
+      const userPerformanceDataNoError = userPerformance[1]
+      const userPerformanceDataError = userPerformance[0]
+
+      if (userMainDataError !== null) {
+        setError(userMainDataError)
+      }
+
+      if (userActivityDataError !== null) {
+        setError(userActivityDataError)
+      }
+
+      if (userAverageSessionsError !== null) {
+        setError(userAverageSessionsError)
+      }
+
+      if (userPerformanceDataError !== null) {
+        setError(userPerformanceDataError)
+      }
       
-      if (userMainData !== null) {
-        setstate({ userActivity, userAverageSessions, userPerformance, userMainData });
+      if (userMainDataNoError !== null) {
+        setstate({userActivity:userActivityDataNoError, userAverageSessions:userAverageSessionsNoError, userPerformance: userPerformanceDataNoError, userMainData: userMainDataNoError });
       } else {
         setstate(null);
       }
@@ -72,7 +101,7 @@ const Accueil = () => {
         <div className="main_container flex column">
           <Sidebar />
           <div className="pagecontent_container grow overflow-hidden">
-          {state !== null &&  (
+          {(state !== null && error === null) && (
             <>
             {state.userMainData !== null && (<Usertitle name={state.userMainData.userInfos.firstName} greetings={'Félicitation ! Vous avez explosé vos objectifs hier 👏'}/>)}
             <div className="allstat_container flex row justify-between ">
@@ -90,7 +119,7 @@ const Accueil = () => {
             </div>
           </>)}
           </div>
-          {state ==null && <NoDataFound />}
+          {error !== null && <NoDataFound message={error.message} />}
         </div> 
         {/* Red testing button on lower right of the screen */}
         <div className="floating_button" onClick={handleButtonClick}>

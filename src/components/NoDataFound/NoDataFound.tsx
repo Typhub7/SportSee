@@ -1,15 +1,17 @@
-import React from 'react';
 import './nodatafound.css'
+interface Props {
+  message : string
+}
 
 /** 
  * Component displaying a message when no data is found for the user.
  * 
  * @returns {JSX.Element} The component displaying the message.
  */
-const NoDataFound: React.FC = () => {
+const NoDataFound = ({message}:Props) => {
   return (
     <div>
-      <p className='message_data'>Aucune donnée existante pour cet utilisateur </p>
+      <p className='message_data'>{message} </p>
     </div>
   );
 };
