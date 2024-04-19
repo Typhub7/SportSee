@@ -12,10 +12,10 @@ const dataFromServer = false
 /** Retrieves user data based on the provided user ID.
  * 
  * @param userId The ID of the user whose data is to be retrieved.
- * @returns User data object if found, otherwise returns null.
+ * @returns Tuple containing either an error message or null, and the userdata object if found, otherwise returns null.
  */
 export const RetrieveUserData = async (userId: number):Promise<[UserError | null , UserMainData | null] > => {
-    let  data : unknown 
+    let  data : UserMainData | unknown
     // Depending on the choice made, displays data from the server or mocked data
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}`)
@@ -29,7 +29,7 @@ export const RetrieveUserData = async (userId: number):Promise<[UserError | null
     }
     
     // If there is a problem with the data, return another message
-    const userData = UserMainDataSchema.safeParse(data);
+    const userData = UserMainDataSchema.safeParse(data)
     if (userData.success) {
         return [ null, userData.data]
     }
@@ -41,11 +41,11 @@ export const RetrieveUserData = async (userId: number):Promise<[UserError | null
 /** Retrieves user activity based on the provided user ID.
  * 
  * @param userId The ID of the user whose data is to be retrieved.
- * @returns User data object if found, otherwise returns null.
+ * @returns Tuple containing either an error message or null, and the userActivity object if found, otherwise returns null.
  */
 
 export const RetrieveUserActivity = async (userId: number):Promise<[UserError | null , UserActivityData | null] > => {
-    let  data : unknown 
+    let  data : UserActivityData | unknown 
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}/activity`)
     } else {
@@ -68,10 +68,10 @@ export const RetrieveUserActivity = async (userId: number):Promise<[UserError | 
 /** Retrieves user average sessions data based on the provided user ID.
  * 
  * @param userId The ID of the user whose data is to be retrieved.
- * @returns User data object if found, otherwise returns null.
+ * @returns Tuple containing either an error message or null, and the userAverageSession object if found, otherwise returns null.
  */
 export const RetrieveUserAverageSessions = async (userId: number):Promise<[UserError | null , UserAverageSessionsData | null] > => {
-    let  data : unknown 
+    let  data : UserAverageSessionsData | unknown
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}/average-sessions`)
     } else {
@@ -94,10 +94,10 @@ export const RetrieveUserAverageSessions = async (userId: number):Promise<[UserE
 /** Retrieves user performance based on the provided user ID.
  * 
  * @param userId The ID of the user whose data is to be retrieved.
- * @returns User data object if found, otherwise returns null.
+ * @returns Tuple containing either an error message or null, and the userPerformanceData object if found, otherwise returns null.
  */
 export const RetrieveUserPerformance = async (userId: number):Promise<[UserError | null , UserPerformanceData | null] >  => {
-    let  data : unknown 
+    let  data : UserPerformanceData | unknown  
     if (dataFromServer) {
         data = await RetrieveData(`http://localhost:3000/user/${userId}/performance`);
     } else {

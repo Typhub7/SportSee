@@ -58,6 +58,7 @@ const Accueil = () => {
       const userAverageSessions = await RetrieveUserAverageSessions(userId)
       const userPerformance = await RetrieveUserPerformance(userId)
       const userMainData = await RetrieveUserData(userId)
+      
       const userMainDataNoError = userMainData[1]
       const userMainDataError = userMainData[0]
       const userActivityDataNoError = userActivity[1]
@@ -84,7 +85,11 @@ const Accueil = () => {
       }
       
       if (userMainDataNoError !== null) {
-        setstate({userActivity:userActivityDataNoError, userAverageSessions:userAverageSessionsNoError, userPerformance: userPerformanceDataNoError, userMainData: userMainDataNoError });
+        setstate({
+          userActivity:userActivityDataNoError,
+          userAverageSessions:userAverageSessionsNoError,
+          userPerformance: userPerformanceDataNoError,
+          userMainData: userMainDataNoError });
       } else {
         setstate(null);
       }
