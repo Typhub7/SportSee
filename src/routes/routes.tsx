@@ -8,13 +8,14 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
  */
 function routes()  {
   // Create a BrowserRouter with the specified routes
-  // change with createHashRouter for Gh-pages
+  // change with createHashRouter for Gh-pages createHashRouter
+  // HashRouter may cause 404 error not working but is necessary for gh-pages
   const router = createHashRouter([
       { path: "/",element: <Accueil /> , errorElement: <ErrorPage />},
-      { path: "/accueil", element: null},
-      { path: "/profil", element: null},
-      { path: "/reglages", element: null},
-      { path: "/communaute", element: null},
+      { path: "/accueil", element: null, errorElement: <ErrorPage />},
+      { path: "/profil", element: null, errorElement: <ErrorPage />},
+      { path: "/reglages", element: null, errorElement: <ErrorPage />},
+      { path: "/communaute", element: null, errorElement: <ErrorPage />},
       { path: "/erreur404", element: <ErrorPage />} , // In case of incorrect user ID input
       { path: "*", element: <ErrorPage />} // In case of incorrect address input, redirect to the error page    
     ])

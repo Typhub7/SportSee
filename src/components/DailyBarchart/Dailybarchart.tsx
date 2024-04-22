@@ -10,7 +10,6 @@ import './dailybarchart.css'
  */
 const Dailybarchart = ({ userActivity }: { userActivity: UserActivityData }) => {
    const userSessions = userActivity.sessions;
-  console.log(userSessions)
 
   return (
     <div className='dailybarchart_container'>
