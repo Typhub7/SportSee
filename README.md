@@ -28,8 +28,8 @@ Ce tableau de bord d'analyse est conçu pour être une plateforme complète perm
 - <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> React ( dont React DOM et React Router DOM)
 - <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-typescrit.png" width="24"/> TypeScript
 - <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-zod.webp" width="24"/> Zod
-- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-tailwind.png" width="72" height="24"/> Tailwind
-- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-recharts.png" width="72" height="24"/> Recharts
+- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-tailwind.png" width="72" height="24" padding-top="5px"/> Tailwind
+- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-recharts.png" width="72" height="24" padding-top="5px"/> Recharts
 
 # Installation
 
