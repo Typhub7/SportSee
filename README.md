@@ -17,6 +17,13 @@ Ce tableau de bord d'analyse est conçu pour être une plateforme complète perm
   - Récupération de Données via une API : 
   Utilisation de fetch, typescript et zod pour récupérer les données à afficher à partir d'une API externe, garantissant ainsi que les informations sont constamment mises à jour, précises et fiables.
 
+# Technologies 
+
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> React
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> TypeScript
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-zod.webp" width="24"/> Zod
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> Tailwind
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> Recharts
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
