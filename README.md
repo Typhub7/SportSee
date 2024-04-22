@@ -2,6 +2,12 @@
  Développement d'un tableau de bord d'analyse dédié au coaching sportif. 
  L'objectif est de fournir aux utilisateurs un outil convivial pour suivre et analyser leurs performances sportives.
 
+## Table of Contents
+- [Description](#description)
+- [Fonctionnalités](#fonctionnalités)
+- [Technologies](#technologies)
+- [Installation](#installation)
+
 # Description
 
 Ce tableau de bord d'analyse est conçu pour être une plateforme complète permettant aux utilisateurs de visualiser leurs données d'entraînement et de performances sportives. À travers une interface utilisateur intuitive, les utilisateurs pourront accéder à des graphiques et des diagrammes dynamiques qui représentent leurs progrès, leurs objectifs et leurs performances dans différents domaines sportifs. 
@@ -19,38 +25,51 @@ Ce tableau de bord d'analyse est conçu pour être une plateforme complète perm
 
 # Technologies 
 
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> React
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> TypeScript
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-zod.webp" width="24"/> Zod
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> Tailwind
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" width="24"/> Recharts
-# React + TypeScript + Vite
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" height="24"/> React ( dont React DOM et React Router DOM)
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-typescrit.png" height="24"/> TypeScript
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-zod.webp" height="24"/> Zod
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-tailwind.png" height="24"/> Tailwind
+-<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" height="24"/> Recharts
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Installation
 
-Currently, two official plugins are available:
+## Utiliser les données serveur : installer le FrontEnd
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Pré-requis :
+ - Git
+ - NodeJS
+ - npm
 
-## Expanding the ESLint configuration
+  1. Pour cloner le repository :  ``` git clone https://github.com/Typhub7/SportSee ```
+  
+  2. Dans votre dossier cloné, installer les dépendances : ``` npm install ```
+  
+  3. Pour démarrer le BackEnd  ``` yarn dev ``` (the backend démarre avec le port:3000)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Utiliser les données serveur : installer le BackEnd
 
-- Configure the top-level `parserOptions` property like this:
+Pré-requis :
+ - Git
+ - NodeJS
+ - Yarn
+
+  1. Pour cloner le repository : ``` git clone https://github.com/Typhub7/P11-Sporsee-Backend ```
+  
+  2. Pour démarrer le BackEnd  ``` yarn dev ``` (the backend démarre avec le port:3000)
+
+
+## Basculer des données mockées ou données serveur
+
+Pour basculer des données au mockées au données serveur il faut modifier la variable dataFromServer dans le fichier Api.tsx
+
+La valeur true correspondant aux données mockées
+la valeur false correspondant aux données du serveur ( necessite que le serveur soit installé et lancé )
 
 ```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Api.tsx lignes 9 et 10
+
+// Use "true" to fetch data from server or "false" to get them from mocked data
+const dataFromServer = false
+
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
