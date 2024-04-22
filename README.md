@@ -58,9 +58,9 @@ Pré-requis :
   2. Pour démarrer le BackEnd  ``` yarn dev ``` (the backend démarre avec le port:3000)
 
 
-## Basculer des données mockées ou données serveur
+## Comment basculer des données mockées au données serveur :
 
-Pour basculer des données au mockées au données serveur il faut modifier la variable dataFromServer dans le fichier Api.tsx
+Pour basculer des données mockées au données serveur il faut modifier la variable dataFromServer dans le fichier Api.tsx
 
 La valeur true correspondant aux données mockées
 la valeur false correspondant aux données du serveur ( necessite que le serveur soit installé et lancé )
