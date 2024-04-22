@@ -25,11 +25,11 @@ Ce tableau de bord d'analyse est conçu pour être une plateforme complète perm
 
 # Technologies 
 
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" height="24"/> React ( dont React DOM et React Router DOM)
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-typescrit.png" height="24"/> TypeScript
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-zod.webp" height="24"/> Zod
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-tailwind.png" height="24"/> Tailwind
--<img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" height="24"/> Recharts
+- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" height="24"/> React ( dont React DOM et React Router DOM)
+- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-typescrit.png" height="24"/> TypeScript
+- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-zod.webp" height="24"/> Zod
+- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-tailwind.png" height="24"/> Tailwind
+- <img src="https://github.com/Typhub7/SportSee/blob/main/public/logo-react.png" height="24"/> Recharts
 
 # Installation
 
