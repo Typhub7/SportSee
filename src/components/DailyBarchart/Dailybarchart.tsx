@@ -1,6 +1,7 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { UserActivityData } from "../../model/UserActivityModel";
 import './dailybarchart.css'
+import { ResponsiveContainer } from 'recharts';
 
 /**
  * Displays a daily bar chart representing user activity.
@@ -13,23 +14,25 @@ const Dailybarchart = ({ userActivity }: { userActivity: UserActivityData }) => 
 
   return (
     <div className='dailybarchart_container'>
-      <BarChart width={835} height={280} data={userSessions} barSize={10} barGap={8}>
-      <CartesianGrid strokeDasharray="2 2" horizontal={true} vertical={false} />
-      <XAxis dataKey="day" axisLine={{ stroke: "#9B9EAC"}} tickLine={false} tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 14 }}
-        tickMargin={14} tickFormatter={(value) => parseInt(value.substring(8)).toString()}/>
-      <YAxis yAxisId="ybar-left" orientation="left" dataKey="calories" tickCount={3} hide={true}/>
-      <YAxis yAxisId="ybar-right" orientation="right" dataKey="kilogram" axisLine={false} tickLine={false} tickCount={3} tickMargin={20}
-        minTickGap={16} domain={["dataMin - 2", "dataMax + 1"]}/> 
-      <Legend verticalAlign="top" content={<CustomLegend />} />
-      <Tooltip 
-        offset={40}
-        wrapperStyle={{ outline: "none", fontWeight: 600 }}
-        cursor={{ fill: 'rgba(196, 196, 196, 0.5)' }}
-        content={<CustomTooltip  />}
-        />
-      <Bar yAxisId="ybar-right" dataKey="kilogram" name="kg" fill="black" radius={[10, 10, 0, 0]} />
-      <Bar yAxisId="ybar-left"  dataKey="calories" name="kCal" fill="red" radius={[10, 10, 0, 0]} />
-      </BarChart>
+      <ResponsiveContainer width="100%" height="100%" aspect={3} minWidth={280}>
+        <BarChart data={userSessions} barSize={10} barGap={8}>
+        <CartesianGrid strokeDasharray="2 2" horizontal={true} vertical={false} />
+        <XAxis dataKey="day" axisLine={{ stroke: "#9B9EAC"}} tickLine={false} tick={{ fill: "#9B9EAC", fontWeight: 500, fontSize: 14 }}
+          tickMargin={14} tickFormatter={(value) => parseInt(value.substring(8)).toString()}/>
+        <YAxis yAxisId="ybar-left" orientation="left" dataKey="calories" tickCount={3} hide={true}/>
+        <YAxis yAxisId="ybar-right" orientation="right" dataKey="kilogram" axisLine={false} tickLine={false} tickCount={3} tickMargin={20}
+          minTickGap={16} domain={["dataMin - 2", "dataMax + 1"]}/> 
+        <Legend verticalAlign="top" content={<CustomLegend />} />
+        <Tooltip 
+          offset={40}
+          wrapperStyle={{ outline: "none", fontWeight: 600 }}
+          cursor={{ fill: 'rgba(196, 196, 196, 0.5)' }}
+          content={<CustomTooltip  />}
+          />
+        <Bar yAxisId="ybar-right" dataKey="kilogram" name="kg" fill="black" radius={[10, 10, 0, 0]} />
+        <Bar yAxisId="ybar-left"  dataKey="calories" name="kCal" fill="red" radius={[10, 10, 0, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }

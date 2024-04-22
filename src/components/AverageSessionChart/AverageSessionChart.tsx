@@ -3,6 +3,7 @@ import { UserAverageSessionsData } from "../../model/UserAverageSessionsModel";
 import formatAverageData from "../../utils/AddDayAverageData";
 import getDayLetter from "../../utils//obtainLetterDay"
 import './averagesessionchart.css'
+import { ResponsiveContainer } from "recharts";
 
 /**
  * Custom tooltip component for the average session duration chart.
@@ -60,62 +61,64 @@ const AverageChart = ({ userAverageSessions }: { userAverageSessions: UserAverag
         <div className="average_title">
 				Durée moyenne des sessions
         </div>
-        <LineChart width={258} height={263} data={userSessions.sessions}  >
-            <defs>
-                <linearGradient id="lineGradient" x1="0%" y1="0" x2="100%" y2="0">
-                    <stop offset="25%" stopColor="rgba(255, 255, 255, 0.4)" />
-                    <stop offset='100%' stopColor="rgba(255, 255, 255, 1)" />
-                </linearGradient>
-            </defs>
-            <Line
-                xAxisId = "courbe"
-                type="natural" 
-                dataKey="sessionLength" 
-                stroke='url(#lineGradient)'
-                strokeWidth={2} 
-                dot={false}
-                activeDot={{ fill: 'white', r: 4, stroke: 'rgba(255,255,255,0.3)', strokeWidth: 8 }}
-            />
+        <ResponsiveContainer width="100%" height="100%" aspect={1} minWidth={180}>
+            <LineChart data={userSessions.sessions}  >
+                <defs>
+                    <linearGradient id="lineGradient" x1="0%" y1="0" x2="100%" y2="0">
+                        <stop offset="25%" stopColor="rgba(255, 255, 255, 0.4)" />
+                        <stop offset='100%' stopColor="rgba(255, 255, 255, 1)" />
+                    </linearGradient>
+                </defs>
+                <Line
+                    xAxisId = "courbe"
+                    type="natural" 
+                    dataKey="sessionLength" 
+                    stroke='url(#lineGradient)'
+                    strokeWidth={2} 
+                    dot={false}
+                    activeDot={{ fill: 'white', r: 4, stroke: 'rgba(255,255,255,0.3)', strokeWidth: 8 }}
+                />
 
-            <XAxis
-                xAxisId = "courbe"
-                dataKey='day'
-                padding={{ left: -5, right: -5 }}
-                hide={true}
-            />
+                <XAxis
+                    xAxisId = "courbe"
+                    dataKey='day'
+                    padding={{ left: -5, right: -5 }}
+                    hide={true}
+                />
 
-            <Line 
-                xAxisId = "axe"
-                dataKey="sessionLength" 
-                dot={false}
-                activeDot={false}
-                hide={true}
-            />
+                <Line 
+                    xAxisId = "axe"
+                    dataKey="sessionLength" 
+                    dot={false}
+                    activeDot={false}
+                    hide={true}
+                />
 
-            <XAxis
-                xAxisId = "axe"
-                dataKey='day'
-                padding={{ left: 10, right: 10 }}
-                axisLine={false}
-                tickLine={false}
-                interval="preserveEnd"
-                tick={{ opacity: 0.5, fill: '#FFFFFF' }}
-                hide={false}
-            />
-            
-            <YAxis
-                hide={true}
-                dataKey='sessionLength'
-                domain={([dataMin, dataMax]) => { const demiAmplitude = (dataMax - dataMin) / 2; return [(dataMin - demiAmplitude ), (dataMax + demiAmplitude +10)] }} 
-            />
-            
-            <Tooltip
-                content={<CustomTooltip />}
-                cursor={<CustomCursor points={[]} width={258} />}
-                wrapperStyle={{ background: "#FFFFFF", outline: "none" }}
-            />
+                <XAxis
+                    xAxisId = "axe"
+                    dataKey='day'
+                    padding={{ left: 10, right: 10 }}
+                    axisLine={false}
+                    tickLine={false}
+                    interval="preserveEnd"
+                    tick={{ opacity: 0.5, fill: '#FFFFFF' }}
+                    hide={false}
+                />
+                
+                <YAxis
+                    hide={true}
+                    dataKey='sessionLength'
+                    domain={([dataMin, dataMax]) => { const demiAmplitude = (dataMax - dataMin) / 2; return [(dataMin - demiAmplitude ), (dataMax + demiAmplitude +10)] }} 
+                />
+                
+                <Tooltip
+                    content={<CustomTooltip />}
+                    cursor={<CustomCursor points={[]} width={258} />}
+                    wrapperStyle={{ background: "#FFFFFF", outline: "none" }}
+                />
 
-        </LineChart>
+            </LineChart>
+        </ResponsiveContainer>
         <div className="DurationSessionsLineChart__labels">
             {userSessions.sessions.map((session, index) => {
                 const dayLetter = getDayLetter(session.day);

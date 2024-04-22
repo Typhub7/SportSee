@@ -14,8 +14,10 @@
 }
 
 .scoreChartPie_container {
+    height: 180px;
+    width: 200px;
     position: absolute;
-    left: 40px;
+    left: 32px;
     top: 40px;
 }
 
@@ -38,7 +40,6 @@
     font-size: 26px;
     color: black;
     font-weight: 600;
-
 }
 
 .scoreObjectifText {
@@ -46,5 +47,33 @@
     font-size: 16px;
     color: #74798C;
     font-weight: 500;
+}
+
+@media (max-width: 1300px) {
+    .scoreChartContainer {
+        width: 205px;
+        height: 205px;
+    }
+
+    .scoreChartTitle {
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+
+    .scoreChartPie_container {
+        height: 160px;
+        width: 160px;
+        position: absolute;
+        left: 27px;
+        top: 27px;
+    }
+
+    .scoreValue {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        width: 130px;
+        height: 130px;
+    }
 }
 

@@ -18,6 +18,15 @@
     padding: 23px;
     width: fit-content;
     border-radius: 0.375rem;
+    width: 835px;
+    height: 280px;
+}
+
+@media (max-width: 1300px) {
+    .dailybarchart_container {
+        width: 660px;
+        height: 210px;
+    }
 }
 
 .dailyBarChart_legend_title {

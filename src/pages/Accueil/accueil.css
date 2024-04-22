@@ -4,11 +4,13 @@
     margin-left: 10%;
     margin-right: 10%;
     max-width: 1250px; 
-    width: 100%; 
+    width: 100%;  
 }
 
+
 .allstat_container {
-    margin-top: 77px;    
+    margin-top: 77px;
+    min-width: 880px;
 }
 
 .main_container {
@@ -40,4 +42,16 @@
 
 .floating_button:hover {
     background-color: #7e1212; /* Changement de couleur de fond au survol */
+}
+
+
+@media (max-width: 1600px) {
+    .pagecontent_container {
+      margin-top: 20px;
+      margin-left: 3%;
+      margin-right: 3%;
+    }
+    .allstat_container {
+        margin-top: 25px
+    }
 }

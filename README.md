@@ -44,7 +44,7 @@ Pré-requis :
   
   2. Dans votre dossier cloné, installer les dépendances : ``` npm install ```
   
-  3. Pour démarrer le BackEnd  ``` yarn dev ``` (the backend démarre avec le port:3000)
+  3. Pour démarrer le BackEnd  ``` npm run dev ``` (le site sera accessible sur le lien http://localhost:5173/SportSee/)
 
 ## Utiliser les données serveur : installer le BackEnd
 

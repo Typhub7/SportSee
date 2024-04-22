@@ -10,6 +10,7 @@
 
 .img_style {
     width: 60px;
+    
 }
 
 .value_style {
@@ -21,4 +22,23 @@
     color : #74798C;
     font-size: 0.875rem;
     font-weight: 500;
+}
+
+@media (max-width: 1300px) {
+    .keydata_container {
+        height: 75px;
+        width: 200px;
+        border-radius: 0.375rem;
+        margin: 0 0 49px 15px;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .img_style {
+        width: 45px;
+    }
+
+    .value_style {
+        font-size: 1rem;
+    }
 }

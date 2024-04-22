@@ -22,3 +22,11 @@
     left: -38px;
 }
 
+@media (max-width: 1300px) {
+    .copyright {
+        top: 83%;
+        left: -20px;
+        font-size: 12px;
+    }
+}
+

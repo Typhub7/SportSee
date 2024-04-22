@@ -3,4 +3,13 @@
     border-radius: 0.375rem;
     font-size: 0.75rem;
     font-weight: 500;
+    width: 258px;
+    height: 263px;
+}
+
+@media (max-width: 1300px) {
+    .radarChartContainer {
+        width: 205px;
+        height: 205px;
+    }
 }

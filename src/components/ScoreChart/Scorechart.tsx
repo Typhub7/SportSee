@@ -1,6 +1,7 @@
 import { PieChart, Pie, Cell} from 'recharts';
 import { UserMainData } from "../../model/UserMainDataModel";
 import './scorechart.css'
+import { ResponsiveContainer } from 'recharts';
 
 /** 
  * Score chart component displaying the user's score and progress towards their goal.
@@ -17,24 +18,25 @@ const ScortChart = ({ userMainData }: { userMainData: UserMainData }) => {
     <div className='scoreChartContainer '>
       <div className="scoreChartTitle">Score</div>
       <div className='scoreChartPie_container'>
-        <PieChart width={180} height={180} >
-          
-          <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              startAngle={80}
-              endAngle={360 * score + 80}
-              innerRadius={"87%"}
-              outerRadius={"100%"}
-              dataKey="value"
-              cornerRadius={10}
-              fill="#8884d8"
-              paddingAngle={5}
-          >
-            <Cell stroke="" fill="red" />
-          </Pie>
-        </PieChart>
+        <ResponsiveContainer width="100%" height="100%" >
+          <PieChart> 
+            <Pie
+                data={data}
+                cx="50%"
+                cy="50%"
+                startAngle={80}
+                endAngle={360 * score + 80}
+                innerRadius={"90%"}
+                outerRadius={"100%"}
+                dataKey="value"
+                cornerRadius={10}
+                fill="#8884d8"
+                paddingAngle={5}
+            >
+              <Cell stroke="" fill="red" />
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
       </div>
       <div className="scoreValue">
         <div className="scorePercentage">{score * 100}%</div>
